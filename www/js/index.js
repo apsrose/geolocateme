@@ -22,59 +22,69 @@ var app =
     initialize: function() {
        
         
-        alert("initiliaze event");
-        
         this.bind();
         
     },
     bind: function() {
     
-    	
-    	
+    	// Register to listen to event on Phone
         document.addEventListener('deviceready', this.deviceready, false);
-        
-       
-        
-        if ( typeof device === "undefined")
-        	{
-	        	alert("we are not in PhoneGap");
-	        
-	        	this.documentLoad();
-	        	
-        	}
-        
-        
-        
-        
+    
+       // Method for testing in Web Browser
+       // comment out before build
+	   this.documentLoad();
+	    
     },
     documentLoad: function(){
 	    
-	    	alert("document Load Event");
-	    	app.report('devicenotinPhoneGap');
+	    	 console.log("document Load Event");
+	    	 app.report('devicenotinPhoneGap');
+	    	 app.setupjqueryMobileEvents();
 	    
     },
     deviceready: function() {
+    	//				Only called on Device
+    	// 
         // This is an event handler function, which means the scope is the event.
         // So, we must explicitly called `app.report()` instead of `this.report()`.
         
-        alert("deviceready event");
         
         app.report('deviceready');
+        
+        app.setupjqueryMobileEvents();
+        
+        
+        
+        
         
     },
     report: function(id) {
     
         // Report the event in the console
-        console.log("Report: " + id);
-
-        // Toggle the state from "pending" to "complete" for the reported ID.
-        // Accomplished by adding .hide to the pending element and removing
-        // .hide from the complete element.
         
-        /*
-        document.querySelector('#' + id + ' .pending').className += ' hide';
-        var completeElem = document.querySelector('#' + id + ' .complete');
-        completeElem.className = completeElem.className.split('hide').join('');
-        */
+        console.log("Report: " + id);
+        
+
+    },
+    setupjqueryMobileEvents: function() {
+	    
+	    $(document).delegate("#foo","pageinit", function() 
+	    {
+	    
+	    	if (typeof device === undefined)
+	    	{
+		    	alert("A jquery mobile page with id of foo was just created");
+	    	}
+	    	else 
+	    	{
+		    	console.log('A jquery mobile page with an ID of Foo was just created'); 
+		    	
+	    	}
+	       
+        });
+	    
+	    
+	    
     }
+    
 };

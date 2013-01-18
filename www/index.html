@@ -28,17 +28,30 @@
             </div>
         </div>
         -->
-        <div data-role="page">
+        <div data-role="page" id="foo">
         	<div data-role="header">
         	<h2>GeoLocation History</h2>
         	</div>
         	<div data-role="content">
-        	<p>Content</p>
+        	<p>Content <a href="#bar">Next page</a></p>
         	</div>
         	<div data-role="footer">
         	<h5>Footer Here</h5>
         	</div>
         </div>
+        
+        <div data-role="page" id="bar">
+        	<div data-role="header">
+        	<h2>GeoLocation History</h2>
+        	</div>
+        	<div data-role="content">
+        	<p>Content <a href="#foo">Previous page</a></p>
+        	</div>
+        	<div data-role="footer">
+        	<h5>Footer Here</h5>
+        	</div>
+        </div>
+
         
         
         
