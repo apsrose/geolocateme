@@ -33,7 +33,9 @@ var app =
     	
         document.addEventListener('deviceready', this.deviceready, false);
         
-        if (Window.ondeviceready === undefined)
+       
+        
+        if ( typeof device === "undefined")
         	{
 	        	alert("we are not in PhoneGap");
 	        
@@ -48,6 +50,7 @@ var app =
     documentLoad: function(){
 	    
 	    	alert("document Load Event");
+	    	app.report('devicenotinPhoneGap');
 	    
     },
     deviceready: function() {
