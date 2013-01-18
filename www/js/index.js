@@ -22,9 +22,9 @@ var app =
     initialize: function() {
        
         
-        console.log("initiliaze event");
+        alert("initiliaze event");
         
-         this.bind();
+        this.bind();
         
     },
     bind: function() {
@@ -35,7 +35,7 @@ var app =
         
         if (Window.ondeviceready === undefined)
         	{
-	        	console.log("we are not in PhoneGap");
+	        	alert("we are not in PhoneGap");
 	        
 	        	this.documentLoad();
 	        	
@@ -47,14 +47,14 @@ var app =
     },
     documentLoad: function(){
 	    
-	    	console.log("document Load Event");
+	    	alert("document Load Event");
 	    
     },
     deviceready: function() {
         // This is an event handler function, which means the scope is the event.
         // So, we must explicitly called `app.report()` instead of `this.report()`.
         
-        console.log("deviceready event");
+        alert("deviceready event");
         
         app.report('deviceready');
         
