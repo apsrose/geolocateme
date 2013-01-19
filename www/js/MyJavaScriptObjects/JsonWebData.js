@@ -4,6 +4,7 @@ var JsonWebDataObject =
 	{
 	
 	this.JsonString = "http://api.geonames.org/findNearbyWikipediaJSON?lat=-37.8413909625&lng=144.95602288625&maxRows=10&username=arose1234&callback=?";
+	
 	this.tempData = null;
 	
 	alert("init func");

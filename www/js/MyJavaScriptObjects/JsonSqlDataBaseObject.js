@@ -22,7 +22,7 @@ var JsonSqlDataBaseObject =
         this.db = openDatabase(shortName, version, displayName, maxSize);
         // You should have a database instance in db.
     	}
-  } catch(e) {
+    } catch(e) {
       // Error handling code goes here.
       if (e == 2) {
           // Version number mismatch.

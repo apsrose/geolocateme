@@ -32,14 +32,15 @@ var app =
     
        // Method for testing in Web Browser
        // comment out before build
-	   this.documentLoad();
+       // COMMENT OUT BEFORE BUILD
+	   //	 this.documentLoad();
 	    
     },
     documentLoad: function(){
 	    
 	    	 console.log("document Load Event");
 	    	 app.report('devicenotinPhoneGap');
-	    	 app.setupjqueryMobileEvents();
+	    	 app.setupJsonControllerForEvents();
 	    
     },
     deviceready: function() {
@@ -51,7 +52,7 @@ var app =
         
         app.report('deviceready');
         
-        app.setupjqueryMobileEvents();
+        app.setupJsonControllerForEvents();
         
         
         
@@ -60,29 +61,16 @@ var app =
     },
     report: function(id) {
     
-        // Report the event in the console
+        	// Report the event in the console
         
-        console.log("Report: " + id);
+        	console.log("Report: " + id);
         
 
     },
-    setupjqueryMobileEvents: function() {
+    setupJsonControllerForEvents: function() 
+    {
 	    
-	    $(document).delegate("#foo","pageinit", function() 
-	    {
-	    
-	    	if (typeof device === undefined)
-	    	{
-		    	alert("A jquery mobile page with id of foo was just created");
-	    	}
-	    	else 
-	    	{
-		    	console.log('A jquery mobile page with an ID of Foo was just created'); 
-		    	
-	    	}
-	       
-        });
-	    
+	   		alert("Hello World in setupJsonController");  
 	    
 	    
     }
