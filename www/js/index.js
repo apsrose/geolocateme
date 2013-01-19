@@ -19,10 +19,8 @@
  
 var app = 
 {
-    initialize: function() {
-       
-        
-        this.bind();
+    initialize: function() {  
+    this.bind();
         
     },
     bind: function() {
@@ -33,7 +31,7 @@ var app =
        // Method for testing in Web Browser
        // comment out before build
        // COMMENT OUT BEFORE BUILD
-	   //	 this.documentLoad();
+	   	 this.documentLoad();
 	    
     },
     documentLoad: function(){
@@ -53,11 +51,7 @@ var app =
         app.report('deviceready');
         
         app.setupJsonControllerForEvents();
-        
-        
-        
-        
-        
+            
     },
     report: function(id) {
     
@@ -65,14 +59,29 @@ var app =
         
         	console.log("Report: " + id);
         
-
     },
     setupJsonControllerForEvents: function() 
     {
 	    
-	   		alert("Hello World in setupJsonController");  
-	    
-	    
+	   		// alert("Hello World in setupJsonController");  
+	   		// app.showAlert("Hello World");
+	   		
+	   		JsonControllerObject.initialize();
+	   		JsonControllerObject.SetUpEventHandlers();
+	   		
+	   		
+	      
+    },
+    showAlert: function (message, title) {
+    	// Native Alert for PhoneGap Application
+    	//
+    	
+	    if (navigator.notification) {
+		    navigator.notification.alert(message, null, title, 'OK');
+	    } else {
+		    alert(title ? (title + ":" + message) : message);
+	    }
     }
+    
     
 };
