@@ -25,17 +25,34 @@ var app =
     },
     bind: function() {
     
-    	// Register to listen to event on Phone
-        document.addEventListener('deviceready', this.deviceready, false);
-    
+    	if (window.PhoneGap /* && navigator.notification && navigator.compass */)
+    	{
+	    	
+	    	// Register to listen to event on Phone
+	    	document.addEventListener('deviceready', this.deviceready, false);
+	
+    	}
+    	else
+    	{
+    		//jQuery event ready to be replaced with 
+    		//jQuery Mobile event ready
+    		
+	    	$(document).ready( app.documentLoad );
+	    	
+	    	
+	    	
+    	}
+    	    
        // Method for testing in Web Browser
        // comment out before build
        // COMMENT OUT BEFORE BUILD
-	   	 this.documentLoad();
+	   //	 this.documentLoad();
 	    
     },
     documentLoad: function(){
 	    
+	    	alert("Document Ready for Web Browser");
+	    	
 	    	 console.log("document Load Event");
 	    	 app.report('devicenotinPhoneGap');
 	    	 app.setupJsonControllerForEvents();
@@ -47,6 +64,7 @@ var app =
         // This is an event handler function, which means the scope is the event.
         // So, we must explicitly called `app.report()` instead of `this.report()`.
         
+        alert("Device Ready fired for PhoneGap");
         
         app.report('deviceready');
         
