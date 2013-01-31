@@ -25,7 +25,9 @@ var app =
     },
     bind: function() {
     
-    	if (window.PhoneGap /* && navigator.notification && navigator.compass */)
+    	/* && navigator.notification && navigator.compass */
+    
+    	if (window.cordova)
     	{
 	    	
 	    	// Register to listen to event on Phone
