@@ -53,7 +53,7 @@ var app =
     },
     documentLoad: function(){
 	    
-	    	alert("Document Ready for Web Browser");
+	    	// alert("Document Ready for Web Browser");
 	    	
 	    	 console.log("document Load Event");
 	    	 app.report('devicenotinPhoneGap');
