@@ -13,31 +13,74 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         
-        
+         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link  rel="stylesheet" type="text/css" href="js/JavaScriptLibraries/jquery.mobile-1.2.0.css" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>GeoLocation History App</title>
+       
+        <title>iTraveller App</title>
     </head>
     <body>
     
-		<!--    
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready">
-                <p class="status pending blink">Connecting to Device</p>
-                <p class="status complete blink hide">Device is Ready</p>
-            </div>
-        </div>
-        -->
-        <div data-role="page" id="photos">
+		    <div data-role="page" id="home">
         	<div data-role="header">
-        	<h2>History Nearby</h2>
+        	<h2>iTraveller</h2>
         	</div>
         	<div data-role="content">
         	
+        	<div id="flexbox">
+        	
+            	
+        	<figure>
+        	<a href="#nearby"><img src="img/Plane40pxHV.svg"/></a>
+        	<figcaption>Airports</figcaption>
+        	</figure>
+        	
+        	<figure>
+			<a href="#nearby"><img src="img/Plane40pxHV.svg"/></a>
+			<figcaption>Universities</figcaption>
+			</figure>
+			
+			
+			<figure>
+			<a href="#nearby"><img src="img/Plane40pxHV.svg"/></a>
+			<figcaption>Landmarks</figcaption>
+        	</figure>
         	
         	
-        	<p>Main Page </p>
+			<figure>
+			<a href="#nearby"><img src="img/Plane40pxHV.svg"/></a>
+			<figcaption>Events</figcaption>
+        	</figure>
+
+        	
+        	
+			<figure>
+			<a href="#nearby"><img src="img/Plane40pxHV.svg"/></a>
+			<figcaption>Stations</figcaption>
+        	</figure>
+
+        	
+        	
+			<figure>
+			<a href="#nearby"><img src="img/Plane40pxHV.svg"/></a>
+			<figcaption>Rivers</figcaption>
+        	</figure>
+
+        	
+        	
+			<figure>
+			<a href="#nearby"><img src="img/Plane40pxHV.svg"/></a>
+			<figcaption>Mountains</figcaption>
+        	</figure>
+
+        	
+			<figure>
+			<a href="#nearby"><img src="img/Plane40pxHV.svg"/></a>
+			<figcaption>Everything</figcaption>
+        	</figure>
+
+        	
+        	
+        	</div>
         	
         	
         	
@@ -48,8 +91,11 @@
         	<div data-role="footer" data-id="mainNavBar" data-position="fixed">
         	<div data-role="navbar" data-iconpos="bottom">
         		<ul> 
-        			<li><a data-icon="gear" href="#places">Places</a></li>
-        			<li><a data-icon="star" href="#photos">Photos</a></li>
+        			<li><a data-icon="star" href="#home">Find</a></li>
+        			<li><a data-icon="gear" href="#places">Found</a></li>
+        			<li><a data-icon="gear" href="#map">Map</a></li>
+        			<li><a data-icon="gear" href="#photoPopUp">Photos</a></li>
+        			
         		</ul>
         	</div>
         	</div>
@@ -57,27 +103,182 @@
         	
         </div>
         
+        
+        <!-- Places found previously and stored in DataBase Locally -->
+        
         <div data-role="page" id="places">
         	<div data-role="header">
-        	<h2>Places List</h2>
+        	<h2>iTraveller</h2>
         	</div>
         	<div data-role="content">
-        	<p>List of Places Close By</p>
+        	
+        	<ul data-role="listview">
+        		<li><a href="#">Place One</a></li>
+        		<li><a href="#">Place Two</a></li>
+        		<li><a href="#">Place Three</a></li>
+        		<li><a href="#">Place Four</a></li>
+        		<li><a href="#">Place Five</a></li>
+        		<li><a href="#">Place Six</a></li>
+        		<li><a href="#">Place Seven</a></li>
+        		<li><a href="#">Place Eight</a></li>
+        		<li><a href="#">Place Nine</a></li>
+        		<li><a href="#">Place Ten</a></li>
+        		<li><a href="#">Place Eleven</a></li>
+        		<li><a href="#">Place Twelve</a></li>
+        	</ul>
+
+        	
+        	
         	</div>
         	<div data-role="footer" data-id="mainNavBar" data-position="fixed">
         	<div data-role="navbar" data-iconpos="bottom">
         		<ul> 
-        			<li><a data-icon="gear" href="#places">Places</a></li>
-        			<li><a data-icon="star" href="#photos">Photos</a></li>
-        		</ul>
+        			<li><a data-icon="star" href="#home">Find</a></li>
+        			<li><a data-icon="gear" href="#places">Found</a></li>
+        			<li><a data-icon="gear" href="#map">Map</a></li>
+        			<li><a data-icon="gear" href="#photoPopUp">Photos</a></li>        					</ul>
         	</div>
         	</div>
         </div>
 
+        <div data-role="page" id="map">
+        
+        	<div data-role="header">
+        	<h2>iTraveller</h2>
+        	</div>
+        	
+        	<div class="maps">
+        	</div>
+        	
+        	
+        	<div data-role="footer" data-id="mainNavBar" data-position="fixed">
+        	<div data-role="navbar" data-iconpos="bottom">
+        		<ul> 
+        			<li><a data-icon="star" href="#home">Find</a></li>
+        			<li><a data-icon="gear" href="#places">Found</a></li>
+        			<li><a data-icon="gear" href="#map">Map</a></li>
+        			<li><a data-icon="gear" href="#photoPopUp">Photos</a></li>        		</ul>
+        	</div>
+        	</div>
+        	
+        	
+        	
+        	
+        </div>
+       
+       <!-- Places found just now and being displayed -->
+        
+       <div data-role="page" id="nearby">
+        
+        	<div data-role="header">
+        	<h2>iTraveller</h2>
+        	</div>
+        	
+        	<div data-role"content">
+        	
+        	<ul data-role="listview">
+        		<li><a href="#">Place One</a></li>
+        		<li><a href="#">Place Two</a></li>
+        		<li><a href="#">Place Three</a></li>
+        		<li><a href="#">Place Four</a></li>
+        		<li><a href="#">Place Five</a></li>
+        		<li><a href="#">Place Six</a></li>
+        		<li><a href="#">Place Seven</a></li>
+        		<li><a href="#">Place Eight</a></li>
+        		<li><a href="#">Place Nine</a></li>
+        		<li><a href="#">Place Ten</a></li>
+        		<li><a href="#">Place Eleven</a></li>
+        		<li><a href="#">Place Twelve</a></li>
+        	</ul>
+        	
+        	
+        	
+        	
+        	</div>
+        	
+        	
+        	<div data-role="footer" data-id="mainNavBar" data-position="fixed">
+        	<div data-role="navbar" data-iconpos="bottom">
+        		<ul> 
+        			<li><a data-icon="star" href="#home">Find</a></li>
+        			<li><a data-icon="gear" href="#places">Found</a></li>
+        			<li><a data-icon="gear" href="#map">Map</a></li>
+        			<li><a data-icon="gear" href="#photoPopUp">Photos</a></li>        				</ul>
+        	</div>
+        	</div>
+        	
+        	
+        	
+        	
+        </div>
+        
+        <div data-role="page" id="nearbyDetails">
+        
+        	<div data-role="header">
+        	<h2>iTraveller</h2>
+        	</div>
+        	
+        	<div data-role"content">
+        	
+        	
+        	
+        	
+        	
+        	
+        	</div>
+        	
+        	
+        	<div data-role="footer" data-id="mainNavBar" data-position="fixed">
+        	<div data-role="navbar" data-iconpos="bottom">
+        		<ul> 
+        			<li><a data-icon="star" href="#home">Find</a></li>
+        			<li><a data-icon="gear" href="#places">Found</a></li>
+        			<li><a data-icon="gear" href="#map">Map</a></li>
+        			<li><a data-icon="gear" href="#photoPopUp">Photos</a></li>        				</ul>
+        	</div>
+        	</div>
+        	
+        	
+        	
+        	
+        </div>
+
+        <div data-role="page" id="photoPopUp">
+        
+        	<div data-role="header">
+        	<h2>iTraveller</h2>
+        	</div>
+        	
+        	<div data-role"content">
+        	
+        	
+        	
+        	
+        	
+        	
+        	</div>
+        	
+        	
+        	<div data-role="footer" data-id="mainNavBar" data-position="fixed">
+        	<div data-role="navbar" data-iconpos="bottom">
+        		<ul> 
+        			<li><a data-icon="star" href="#home">Find</a></li>
+        			<li><a data-icon="gear" href="#places">Found</a></li>
+        			<li><a data-icon="gear" href="#map">Map</a></li>
+        			<li><a data-icon="gear" href="#photoPopUp">Photos</a></li>        				</ul>
+        	</div>
+        	</div>
+        	
+        	
+        	
+        	
+        </div>
+
         
         
-        
+      
         <script type="text/javascript" src="phonegap.js"></script>
+        
        
        <script src="js/JavaScriptLibraries/jquery-1.8.2.js" type="text/javascript"></script>
         
@@ -93,10 +294,18 @@
           
            <script src="js/MyJavaScriptObjects/JsonControllerObject.js" type="text/javascript"></script>
 
-
         
        
         <script type="text/javascript" src="js/index.js"></script>
+        
+<!-- Load Google Maps JavaScript API -->
+			
+	<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfV5bXgRZvSDwCZXiOWi2asneJqU5MUbk&sensor=false">
+    </script>
+
+        
+        
         
         <script type="text/javascript">
             app.initialize();
