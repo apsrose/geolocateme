@@ -17,6 +17,7 @@
 			width: 50px;
 			height: 50px;
 			float: left;
+			
 			}
 			
 	#flexbox > figure  figcaption {
@@ -24,8 +25,16 @@
 			font-family:Palatino Linotype;
 			text-shadow:0px 0px #FF0000; 
 			color: black;
+			text-align: left;
 
 			}
+			
+	#flexbox > figure:nth-of-type(3) {
+		background-image: url("../img/Animations/landmarks0.svg");
+		-webkit-animation: Landmarks 20s infinite;
+			
+		
+	}
 
 	
 	.maps {
@@ -36,6 +45,25 @@
   			margin-top: 2px;
   			margin-right: 2px;
     	}
+    	
+    	
+    @-webkit-keyframes Landmarks
+    {
+	   0% {background-image: url("../img/Animations/landmarks0.svg");}
+	   10% {background-image: url("../img/Animations/landmarks11.svg");}
+	   20% {background-image: url("../img/Animations/landmarks21.svg");}
+	   30% {background-image: url("../img/Animations/landmarks31.svg");}
+	   40% {background-image: url("../img/Animations/landmarks41.svg");}
+	   50% {background-image: url("../img/Animations/landmarks51.svg");}
+	   60% {background-image: url("../img/Animations/landmarks61.svg");}
+	   70% {background-image: url("../img/Animations/landmarks71.svg");}
+	   80% {background-image: url("../img/Animations/landmarks81.svg");}
+	   90% {background-image: url("../img/Animations/landmarks91.svg");}
+	   100% {background-image: url("../img/Animations/landmarks0.svg");}
+
+	   
+    }
+    	
     	
     		
 

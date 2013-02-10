@@ -19,11 +19,14 @@
  
 var app = 
 {
-    initialize: function() {  
+    initialize: function() 
+    { 
+    
     this.bind();
         
     },
-    bind: function() {
+    bind: function() 
+    {
     
     	/* && navigator.notification && navigator.compass */
     
@@ -36,41 +39,37 @@ var app =
     	}
     	else
     	{
-    		//jQuery event ready to be replaced with 
-    		//jQuery Mobile event ready
+    		// jQuery event ready to be replaced with 
+    		// jQuery Mobile event ready
     		
 	    	$(document).ready( app.documentLoad );
-	    	
-	    	
-	    	
+	    		
     	}
-    	    
-       // Method for testing in Web Browser
-       // comment out before build
-       // COMMENT OUT BEFORE BUILD
-	   //	 this.documentLoad();
+    
 	    
     },
-    documentLoad: function(){
+    documentLoad: function()
+    {
 	    
 	    	// alert("Document Ready for Web Browser");
 	    	
 	    	 console.log("document Load Event");
-	    	 app.report('devicenotinPhoneGap');
+	    	 console.log('devicenotinPhoneGap');
 	    	 app.setupJsonControllerForEvents();
 	    
     },
-    deviceready: function() {
-    	//				Only called on Device
-    	// 
-        // This is an event handler function, which means the scope is the event.
-        // So, we must explicitly called `app.report()` instead of `this.report()`.
-        
-        alert("Device Ready fired for PhoneGap");
-        
-        app.report('deviceready');
-        
-        app.setupJsonControllerForEvents();
+    deviceready: function() 
+    {
+	    	//	Only called on Device
+	    	// 
+	        // This is an event handler function, which means the scope is the event.
+	        // So, we must explicitly called `app.report()` instead of `this.report()`.
+	        
+	        console.log("Device Ready fired for PhoneGap");
+	        
+	        console.log('deviceready');
+	        
+	        app.setupJsonControllerForEvents();
             
     },
     report: function(id) {
@@ -92,15 +91,16 @@ var app =
 	   		
 	      
     },
-    showAlert: function (message, title) {
-    	// Native Alert for PhoneGap Application
-    	//
-    	
-	    if (navigator.notification) {
-		    navigator.notification.alert(message, null, title, 'OK');
-	    } else {
-		    alert(title ? (title + ":" + message) : message);
-	    }
+    showAlert: function (message, title)
+    {
+	    	// Native Alert for PhoneGap Application
+	    	//
+	    	
+		    if (navigator.notification) {
+			    navigator.notification.alert(message, null, title, 'OK');
+		    } else {
+			    alert(title ? (title + ":" + message) : message);
+		    }
     }
     
     

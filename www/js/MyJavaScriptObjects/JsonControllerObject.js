@@ -17,6 +17,27 @@ var JsonControllerObject = {
 	},
 	SetUpEventHandlers: function()
 	{
+		// Dynamic links
+		$(document).bind("pagebeforechange", function(e,data)
+		{
+			if (typeof data.toPage === "string")	
+			{
+				var u = $.mobile.path.parseUrl(data.toPage);
+				var re = /^#nearby/;
+				
+				if (u.hash.search(re) !== -1)
+				{
+					//alert("ok");
+					JsonControllerObject.showCategory(u, data.options);
+					e.preventDefault();	
+				}
+			}
+		}
+		
+		);
+		
+		
+		
 		//Handle pageinit event for page #foo
 		//
 		$(document).delegate("#places","pageinit", function() 
@@ -87,7 +108,7 @@ var JsonControllerObject = {
 	
 	//alert("width is: " + w);
 	
-	alert ("width is : " + $("div.maps").width() );
+	console.log("width is : " + $("div.maps").width() );
 	
 	
 	
@@ -130,14 +151,34 @@ var JsonControllerObject = {
 		
 		//google.maps.event.addListener(marker, 'click', function() { 
 	
-		alert("Hello World " + this.title );
+		console.log("Hello World " + this.title );
+		
+		return true;
 	
 		// playAudio(markerCount);
 	
 		});
 	
-	}
+	},
 	
+	showCategory: function(urlObj, options)
+	{
+		var categoryName = urlObj.hash.replace( /.*category=/, "");
+		//var category = categoryData[categoryName];
+		var pageSelector = urlObj.hash.replace(/\?.*$/, "");
+		
+		console.log("categoryName is: " + categoryName);
+		console.log("pageSelector is: " + pageSelector);
+		
+		var $page = $(pageSelector);
+		
+		console.log("pageSelector is: " + $page[0]);
+		
+		$.mobile.changePage($page, options);
+		
+		
+		
+	}
 	
 	
 	
