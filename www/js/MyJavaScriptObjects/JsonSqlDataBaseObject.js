@@ -15,7 +15,7 @@ var JsonSqlDataBaseObject =
  	
  	else 
     	{      
-    	var shortName = 'mydatabase1';
+    	var shortName = 'iTravellerDatabase';
         var version = '1.0';
         var displayName = 'My Important Database1';
         var maxSize = 65536; // in bytes 64kb

@@ -3,23 +3,25 @@ var JsonWebDataObject =
 	initialize: function()
 	{
 	
-	this.JsonString = "http://api.geonames.org/findNearbyWikipediaJSON?lat=-37.8413909625&lng=144.95602288625&maxRows=10&username=arose1234&callback=?";
+	this.JsonGeoNamesString = "http://api.geonames.org/findNearbyWikipediaJSON?lat=-37.8413909625&lng=144.95602288625&maxRows=15&username=arose1234&callback=?";
+	this.JsonFlikrString = "";
+	this.JsonGooglePlacesString = "";
 	
 	this.tempData = null;
 	
-	alert("init func");
+	console.log("JsonWebDataObject init function");
 	
 	},
-	connectToDataSource: function()
+	connectToDataSource: function(latitude,longitude)
 	{
+	// Latitude and Longitude to be passed in from Controller from GPS Co-ordinates
 	
 	
 	
-	
-	$.ajax( { url:this.JsonString, dataType: "json" }).
+	$.ajax( { url:this.JsonGeoNamesString, dataType: "json" }).
 	done( function(data)
 	{ 
-		alert("ok" + " " + data); 
+		console.log("ok" + " " + data); 
 		/*
 		if (data.geonames instanceof Array)
 		{
@@ -29,6 +31,7 @@ var JsonWebDataObject =
 		
 		$.each(data.geonames, function(i, obj)
 		{
+			/*
 			console.log("Language is: " + obj.lang);
 			console.log("Title is: " + obj.title);
 			console.log("Summary is: " + obj.summary);
@@ -41,30 +44,54 @@ var JsonWebDataObject =
 			console.log("Wikipedia URL is: " + obj.wikipediaUrl);
 			console.log("Thumbnail link is: " + obj.thumbnailImg);
 			console.log("Ranking is: " + obj.rank);
-		
+			*/
+			console.log("Number of item is: " + i);
+			console.log("Title is: " + obj.title);
+			
+			
+			//Check if obj.thumbnailImg is undefined or null then get images
+			
+			
+			
+			// Create specific object for GeoName info
+			var foundObject = 
+			new GeoNameDataObject(obj.lang, obj.title, obj.summary, obj.feature, obj.countryCode, obj.elevation, obj.population, obj.lat, obj.lng,obj.wikipediaUrl, 	obj.thumbnailImg, obj.rank);
+			
+			
+			JsonWebDataObject.storeDataInDatabaseObject(foundObject);
+			
 		
 		});
 		
 		
-		
+		console.log(" End Seconds are: " + new Date().getSeconds().toLocaleString());
 		
 		//this.tempData = data;
 		
 		//data typeof
 		
-	}).fail( function(error) { alert("error in Json Query"); });
+	}).fail( function(error) { console.log("error in Json Query"); });
 
 
 	},
-	storeDataInDatabaseObject: function()
+	storeDataInDatabaseObject: function(foundObject)
 	{
 	
+		console.log("storeData " + foundObject.title);	
 	
 	
-
-
-
-
-
+	},
+	connectToFlikrDataSource: function(foundObject)
+	{
+		// We have an Object with no images so we need to find some
+		
+		
+		
+		
+	},
+	connectToGooglePlacesDataSource: function()
+	{
+		
+		
 	}
 }

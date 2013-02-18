@@ -42,7 +42,11 @@ var app =
     		// jQuery event ready to be replaced with 
     		// jQuery Mobile event ready
     		
-	    	$(document).ready( app.documentLoad );
+    		// Standard jQuery StartUp ready
+	    	 $(document).ready( app.documentLoad );
+	    	
+	    	// jQuery Mobile 1.2.0 Startup ready -- mobileinit occurrs with a lag of the onscreen css layout - cannot use
+	    	// $(document).bind('mobileinit', function() {  console.log("app mobileinit called"); });
 	    		
     	}
     

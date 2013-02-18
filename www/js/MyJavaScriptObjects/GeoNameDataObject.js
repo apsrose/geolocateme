@@ -24,3 +24,21 @@ var GeoNameDataObject =
 	
 
 }
+
+
+// Function object creates an Image Reference from an Ajax Query
+
+var ImageDataObject = 
+		function(IdentificationNumber, lang, title, lat, lng, thumbnailImg)
+{
+		// this.IDNumber = DateTimeNowLong + title + lat + lng ToString()
+		this.lang = lang;
+		this.title = title;
+		this.lat = lat;
+		this.lng = lng;
+		this.thumbnailImg = thumbnailImg;
+		
+		
+		
+		
+}

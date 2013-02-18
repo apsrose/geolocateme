@@ -18,6 +18,7 @@ var JsonControllerObject = {
 	SetUpEventHandlers: function()
 	{
 		// Dynamic links
+		// 
 		$(document).bind("pagebeforechange", function(e,data)
 		{
 			if (typeof data.toPage === "string")	
@@ -64,8 +65,18 @@ var JsonControllerObject = {
 		{
 
  		// app.showAlert('pageinit');
- 
-		JsonControllerObject.InitializeMap();
+ 		
+ 		console.log('pageinit');
+ 		
+ 		if (JsonControllerObject.isThereAConnection() == true)
+ 		{
+	 		JsonControllerObject.InitializeMap();
+ 		}
+		else
+		{
+			app.ShowAlert("Network","No Network detected");
+			
+		}
  
 		});
 
@@ -153,7 +164,7 @@ var JsonControllerObject = {
 	
 		console.log("Hello World " + this.title );
 		
-		return true;
+		//return true;
 	
 		// playAudio(markerCount);
 	
@@ -170,11 +181,71 @@ var JsonControllerObject = {
 		console.log("categoryName is: " + categoryName);
 		console.log("pageSelector is: " + pageSelector);
 		
+		//Check for Network Connection
+		if (JsonControllerObject.isThereAConnection() == true)
+ 		{
+			
+			//Create Visual Display Loading Dialog box
+			console.log(" Start Seconds are: " + new Date().getSeconds().toLocaleString());
+			 		
+ 		
+ 			//Make Json Call for Information
+ 			JsonWebDataObject.initialize();
+ 			JsonWebDataObject.connectToDataSource();
+ 			
+ 			//Stop Loading Dialog box
+ 			//console.log(" End Time is: " + new Date().getTime());
+ 			
+ 		
+	 	}
+	 	else
+	 	{
+		 	app.ShowAlert("Network","No Network detected");
+			
+
+	 	}
+		
+		
 		var $page = $(pageSelector);
 		
 		console.log("pageSelector is: " + $page[0]);
 		
 		$.mobile.changePage($page, options);
+		
+		
+		
+	},
+	
+	isThereAConnection: function()
+	{
+		if (navigator.network)
+		{
+			//PhoneGap Networking Check
+			var networkState = navigator.network.connection.type;
+			//var states = {};
+			
+			if ((networkState == Connection.UNKNOWN) || (networkState == Connection.NONE) )
+			{
+				console.log("UNKNOWN or NONE Network Connection");
+				return false;
+				
+			}
+			else
+			{
+				console.log("Mobile Phone network");
+				return true;
+				
+			}
+			
+			
+			
+			
+		}
+		else
+		{
+			console.log("Non Phonegap network");
+			return true;
+		}
 		
 		
 		
