@@ -218,10 +218,10 @@ var JsonControllerObject = {
 	
 	isThereAConnection: function()
 	{
-		if (navigator.network)
+		if (navigator.connection)
 		{
 			//PhoneGap Networking Check
-			var networkState = navigator.network.connection.type;
+			var networkState = navigator.connection.type;
 			//var states = {};
 			
 			if ((networkState == Connection.UNKNOWN) || (networkState == Connection.NONE) )
@@ -232,7 +232,7 @@ var JsonControllerObject = {
 			}
 			else
 			{
-				console.log("Mobile Phone network");
+				console.log("PhoneGap and Mobile Phone network");
 				return true;
 				
 			}
