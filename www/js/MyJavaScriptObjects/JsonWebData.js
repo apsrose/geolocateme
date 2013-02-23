@@ -1,3 +1,11 @@
+/*
+
+	MVC Model Helper Object
+	
+
+
+*/
+
 var JsonWebDataObject =
 {
 	initialize: function()

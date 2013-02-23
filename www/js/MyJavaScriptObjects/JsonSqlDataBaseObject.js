@@ -1,3 +1,10 @@
+/*
+
+	MVC Model Object
+
+*/
+
+
 var JsonSqlDataBaseObject =
 {
 

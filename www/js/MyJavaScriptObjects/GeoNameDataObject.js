@@ -1,4 +1,8 @@
 /*
+	MVC 
+	
+	Model Helper Object
+	
 	GeoNameDataObject exists as Object with one location of 
 	Interest
 

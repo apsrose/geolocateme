@@ -1,3 +1,15 @@
+/*
+
+	MVC Controller Object
+
+
+
+
+
+*/
+
+
+
 var JsonControllerObject = {
 
 	initialize: function(DataBaseObject, WebDataObject)
