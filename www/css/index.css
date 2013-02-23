@@ -9,6 +9,61 @@
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 }
 
+/*
+.ui-icon-itraveller-found
+{
+	background-image: url(../glyphish-icons/07-map-marker.png);
+	
+}
+*/
+
+.ui-navbar-custom .ui-btn .ui-btn-inner 
+{ 
+	font-size: 11px!important;
+	padding-top: 10px!important; 
+	padding-bottom: 35px!important;
+
+}
+
+
+.ui-navbar-custom .ui-btn .ui-icon 
+{ 
+	width: 30px!important; 
+	height: 30px!important; 
+	margin-left: -15px!important; 
+	box-shadow: none!important; 
+	-moz-box-shadow: none!important; 
+	-webkit-box-shadow: none!important; 
+	-webkit-border-radius: none !important; 
+	border-radius: none !important; 
+}
+
+
+
+	#find .ui-icon 
+	{ 
+	background:  url("../glyphish-icons/63-runner.png")
+		50% 50% no-repeat; background-size: 18px 25px;
+	}
+
+	#found .ui-icon 
+	{ 
+	background:  url("../glyphish-icons/07-map-marker.png")
+		50% 50% no-repeat; background-size: 16px 26px;
+	}
+
+	#photos .ui-icon 
+	{ 
+	background:  url("../glyphish-icons/43-film-roll.png")
+		50% 50% no-repeat; background-size: 26px 22px;
+	}
+	
+	#map .ui-icon 
+	{ 
+	background:  url("../glyphish-icons/103-map.png")
+		50% 50% no-repeat; background-size: 26px 21px;
+	}
+
 
 
 @media screen and (max-width: 320px) and (max-height: 480px)
