@@ -21,7 +21,7 @@ var JsonControllerObject = {
 	 this.bluedot = null;
 	 
 	 
-	// this.GeoNameDataObject = c;
+	 //this.GeoNameArray = new Array();
 	
 	
 	
@@ -37,12 +37,18 @@ var JsonControllerObject = {
 			{
 				var u = $.mobile.path.parseUrl(data.toPage);
 				var re = /^#nearby/;
+				var re2 =/^#nearbyDetails/;
 				
 				if (u.hash.search(re) !== -1)
 				{
 					//alert("ok");
 					JsonControllerObject.showCategory(u, data.options);
 					e.preventDefault();	
+				}
+				else if (u.hash.search(re2) !== -1)
+				{
+					console.log("nearbyDetails Page");
+					
 				}
 			}
 		}
@@ -113,6 +119,44 @@ var JsonControllerObject = {
 
 
 		});
+		
+		$(document).delegate("#nearby","pagebeforecreate",function(){
+			var listViewDynamic = '<ul id="nearbyListView" data-role="listview" data-filter="true">';
+			var listItem = '<li><a href="#">Place One</a></li>';
+			var endOfList = '</ul>';
+			//var testAppend = "Test :";
+			
+			
+			/* Need to create in html listview with places found */
+			
+			if ( JsonWebDataObject !== typeof("undefined"))
+			{
+				if (JsonWebDataObject.currentItemsToReturn !== typeof("undefined"))
+				{
+					JsonWebDataObject.currentItemsToReturn.forEach(function(placeObject){
+					
+					// console.log("In Loop" + placeObject.title);
+					
+					//testAppend += placeObject.title + " ";
+					
+					
+					
+					listViewDynamic += '<li><a href="#"><h3>'  + placeObject.title + '</h3><p>' + placeObject.summary+ '</p></a></li>';
+					
+					});
+					
+				}
+				
+				
+				
+			}
+			
+			//console.log(testAppend);
+			
+			var outPut = listViewDynamic + endOfList;
+			
+			$("#nearbyListView").replaceWith(outPut);
+		});
 	
 	
 		
@@ -121,42 +165,42 @@ var JsonControllerObject = {
 	{
 
 
- 	// var marker = new google.maps.Marker({  });
-
-	var latlng = new google.maps.LatLng(39.98574444, -83.04474722);
-
-	var myOptions = { zoom: 14, center: latlng, mapTypeId: google.maps.MapTypeId.ROADMAP};
-
-	var w = $(window).width();
+	 	// var marker = new google.maps.Marker({  });
 	
-	//alert("width is: " + w);
+		var latlng = new google.maps.LatLng(39.98574444, -83.04474722);
 	
-	console.log("width is : " + $("div.maps").width() );
+		var myOptions = { zoom: 14, center: latlng, mapTypeId: google.maps.MapTypeId.ROADMAP};
+	
+		var w = $(window).width();
+		
+		//alert("width is: " + w);
+		
+		console.log("width is : " + $("div.maps").width() );
+		
+		
+		
+		//$("div.maps").width("95%");
+	
+		JsonControllerObject.map = new google.maps.Map($("div.maps")[0], myOptions); 	
+	
+		
+		JsonControllerObject.bluedot = new google.maps.MarkerImage('img/purpledot.png',
+		new google.maps.Size(38, 38), 
+		new google.maps.Point(0, 0), 
+		new google.maps.Point(19, 19) );
+	
+		JsonControllerObject.addMarker(latlng);
+		
+	
+		JsonControllerObject.addMarker(new google.maps.LatLng(39.98540278, -83.04531944));
+		JsonControllerObject.addMarker(new google.maps.LatLng(39.98600278, -83.04510000));
+		JsonControllerObject.addMarker(new google.maps.LatLng(39.98670000, -83.04495833));
+		JsonControllerObject.addMarker(new google.maps.LatLng(39.98721389, -83.04514444));
 	
 	
+		
 	
-	//$("div.maps").width("95%");
-
-	JsonControllerObject.map = new google.maps.Map($("div.maps")[0], myOptions); 	
-
-	
-	JsonControllerObject.bluedot = new google.maps.MarkerImage('img/purpledot.png',
-	new google.maps.Size(38, 38), 
-	new google.maps.Point(0, 0), 
-	new google.maps.Point(19, 19) );
-
-	JsonControllerObject.addMarker(latlng);
-	
-
-	JsonControllerObject.addMarker(new google.maps.LatLng(39.98540278, -83.04531944));
-	JsonControllerObject.addMarker(new google.maps.LatLng(39.98600278, -83.04510000));
-	JsonControllerObject.addMarker(new google.maps.LatLng(39.98670000, -83.04495833));
-	JsonControllerObject.addMarker(new google.maps.LatLng(39.98721389, -83.04514444));
-
-
-	
-
-	// alert("Init Maps");
+		// alert("Init Maps");
 
 	},
 	addMarker: function(latlon)
@@ -196,6 +240,7 @@ var JsonControllerObject = {
 		//Check for Network Connection
 		if (JsonControllerObject.isThereAConnection() == true)
  		{
+ 			
 			
 			//Create Visual Display Loading Dialog box
 			console.log(" Start Seconds are: " + new Date().getSeconds().toLocaleString());
@@ -203,7 +248,17 @@ var JsonControllerObject = {
  		
  			//Make Json Call for Information
  			JsonWebDataObject.initialize();
- 			JsonWebDataObject.connectToDataSource();
+ 			
+ 			
+ 			//clear the Array with previous Found Items
+ 			//JsonControllerObject.GeoNameArray.length = 0;
+ 			
+ 			var $page = $(pageSelector);
+ 			
+ 			JsonWebDataObject.connectToDataSource(0,0,$page,options);
+ 			
+ 			
+ 			
  			
  			//Stop Loading Dialog box
  			//console.log(" End Time is: " + new Date().getTime());
@@ -218,13 +273,22 @@ var JsonControllerObject = {
 	 	}
 		
 		
-		var $page = $(pageSelector);
 		
-		console.log("pageSelector is: " + $page[0]);
+		//Cannot simply switch to next Page without Ajax Data
+		
+		
+		
+		//console.log("pageSelector is: " + $page[0]);
+		
+				
+		
+		
+	},
+	
+	switchToReadyPage: function($page, options){
 		
 		$.mobile.changePage($page, options);
-		
-		
+
 		
 	},
 	
@@ -238,6 +302,7 @@ var JsonControllerObject = {
 			
 			if ((networkState == Connection.UNKNOWN) || (networkState == Connection.NONE) )
 			{
+				app.showAlert("No Network", "Unable to receive data");
 				console.log("UNKNOWN or NONE Network Connection");
 				return false;
 				

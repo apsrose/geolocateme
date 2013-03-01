@@ -17,11 +17,15 @@ var JsonWebDataObject =
 	
 	this.tempData = null;
 	
+	this.currentItemsToReturn = new Array();
+		
 	console.log("JsonWebDataObject init function");
 	
 	},
-	connectToDataSource: function(latitude,longitude)
+	connectToDataSource: function(latitude,longitude,$page, options)
 	{
+	
+	
 	// Latitude and Longitude to be passed in from Controller from GPS Co-ordinates
 	
 	
@@ -66,17 +70,33 @@ var JsonWebDataObject =
 			new GeoNameDataObject(obj.lang, obj.title, obj.summary, obj.feature, obj.countryCode, obj.elevation, obj.population, obj.lat, obj.lng,obj.wikipediaUrl, 	obj.thumbnailImg, obj.rank);
 			
 			
+			
+			JsonWebDataObject.currentItemsToReturn.push(foundObject);
+			
+			//arrayToReturn.push(foundObject);
+			
+			
 			JsonWebDataObject.storeDataInDatabaseObject(foundObject);
 			
 		
 		});
 		
 		
+		
 		console.log(" End Seconds are: " + new Date().getSeconds().toLocaleString());
+		
+		//$.mobile.loading('show');
+		//$.mobile.loading('hide');
 		
 		//this.tempData = data;
 		
 		//data typeof
+		
+		console.log(" Can now switch to #Nearby Page");
+		
+		JsonControllerObject.switchToReadyPage($page,options);
+		
+		
 		
 	}).fail( function(error) { console.log("error in Json Query"); });
 
