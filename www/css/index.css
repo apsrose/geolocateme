@@ -124,7 +124,7 @@
 @media screen and (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2)
 {
 	.maps {
-			height: 465px;
+			height: 438px;
 			width: 315px;
 			border: 1px solid #000;
   			margin-left: 2px;
