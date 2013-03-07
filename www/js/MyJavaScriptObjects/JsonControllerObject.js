@@ -234,6 +234,8 @@ var JsonControllerObject = {
 		//var category = categoryData[categoryName];
 		var pageSelector = urlObj.hash.replace(/\?.*$/, "");
 		
+		
+		
 		console.log("categoryName is: " + categoryName);
 		console.log("pageSelector is: " + pageSelector);
 		
